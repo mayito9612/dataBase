@@ -29,12 +29,13 @@ public class DataBase {
     }
 
     public Product removeById(long id) {
-        Product product = db.stream().filter((p) -> p.getId() == id).findFirst().orElse(null);
-        if (product != null) {
-            db.remove(product);
-            return product;
+    //Product product = db.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+        for (Product product : db) {
+            if (product != null) {
+                db.remove(product);
+                return product;
+            }
         }
-
         return null;
     }
 
