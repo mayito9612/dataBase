@@ -40,5 +40,31 @@ public class DatabaseTest {
         assertEquals(p.getId(), 3);
         assertEquals(p.getName(), "Mordisco");
     }
+    @Test
+    @DisplayName("Eliminar por id")
+    public void removeById() {
+        db.insert(new Product(1, "Coca Cola"));
+        db.insert(new Product(2, "Gansito"));
+        db.insert(new Product(3, "Mordisko"));
+
+        Product p = db.removeById(2);
+
+        assertEquals(p.getId(), 3);
+        assertEquals(p.getName(), "Gansito");
+        assertEquals(db.size(), 3);
+    }
+
+    @Test
+    @DisplayName("modificar por id")
+    public void updateById() {
+        db.insert(new Product(1, "Coca Cola"));
+        db.insert(new Product(2, "Gansito"));
+        db.insert(new Product(3, "Mordisko"));
+
+        db.updateById(3, new Product(3, "Mordisko"));
+
+        assertEquals(db.getById(3).getId(), 3);
+        assertEquals(db.getById(3).getName(), "Mordisko");
+    }
 
 }
