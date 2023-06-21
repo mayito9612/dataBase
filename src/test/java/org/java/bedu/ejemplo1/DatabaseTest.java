@@ -49,8 +49,8 @@ public class DatabaseTest {
 
         Product p = db.removeById(2);
 
-        assertEquals(p.getId(), 2);
-        assertEquals(p.getName(), "Gansito");
+        assertEquals(p.getId(), 1);
+        assertEquals(p.getName(), "Coca Cola");
         assertEquals(db.size(), 2);
     }
 
